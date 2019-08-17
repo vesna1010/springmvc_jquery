@@ -59,9 +59,9 @@ public class QuestionControllerTest extends BaseControllerTest {
 		       .andExpect(status().isOk())
 	           .andExpect(content().contentType("application/json;charset=UTF-8"))
 	           .andExpect(jsonPath("$", hasSize(3)))
-	           .andExpect(jsonPath("$[0].question", is("Question A")))
-	           .andExpect(jsonPath("$[1].question", is("Question B")))
-	           .andExpect(jsonPath("$[2].question", is("Question C")));
+	           .andExpect(jsonPath("$[0].questionText", is("Question A")))
+	           .andExpect(jsonPath("$[1].questionText", is("Question B")))
+	           .andExpect(jsonPath("$[2].questionText", is("Question C")));
 	
 		verify(questionService, times(1)).getAllQuestions();
 	}
@@ -74,9 +74,9 @@ public class QuestionControllerTest extends BaseControllerTest {
 	           .andExpect(status().isOk())
                .andExpect(content().contentType("application/json;charset=UTF-8"))
                .andExpect(jsonPath("$", hasSize(3)))
-               .andExpect(jsonPath("$[0].question", is("Question A")))
-               .andExpect(jsonPath("$[1].question", is("Question B")))
-               .andExpect(jsonPath("$[2].question", is("Question C")));
+               .andExpect(jsonPath("$[0].questionText", is("Question A")))
+               .andExpect(jsonPath("$[1].questionText", is("Question B")))
+               .andExpect(jsonPath("$[2].questionText", is("Question C")));
 	
 		verify(questionService, times(1)).getThreeQuestionsByQuiz(quiz1);
 	}
@@ -88,7 +88,7 @@ public class QuestionControllerTest extends BaseControllerTest {
 		mockMvc.perform(get("/questions/1"))
                .andExpect(status().isOk())
                .andExpect(content().contentType("application/json;charset=UTF-8"))
-               .andExpect(jsonPath("$.question", is("Question A")));
+               .andExpect(jsonPath("$.questionText", is("Question A")));
 		
 		verify(questionService, times(1)).getQuestionById(1L);
 	}
