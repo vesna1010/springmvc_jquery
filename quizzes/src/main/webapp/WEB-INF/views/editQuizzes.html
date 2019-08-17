@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit Quizzes</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://localhost:8080/quizzes/resources/js/editQuizzes.js"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://localhost:8080/quizzes/resources/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<br>
+				<h2 class="text-white">Edit&nbsp;Quizzes</h2>
+				<br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="#" id="openQuizDialog" class="btn btn-success">Add&nbsp;Quiz</a>
+				<a href="/quizzes/editQuestions" class="btn btn-primary">Edit&nbsp;Questions</a><a
+					href="/quizzes/playQuiz" class="btn btn-primary">Play&nbsp;Quiz</a>
+
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>NAME</th>
+								<th>MANAGE</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="quizDialog">
+		<table>
+			<tr>
+				<td>Quiz&nbsp;Name</td>
+				<td><input type="hidden" name="id" /><input type="text"
+					name="name" /></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

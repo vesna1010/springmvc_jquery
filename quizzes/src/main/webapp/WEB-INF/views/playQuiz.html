@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Play Quiz</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://localhost:8080/quizzes/resources/js/playQuiz.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://localhost:8080/quizzes/resources/css/style.css">
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-9">
+				<br> <br> <br> <a href="/quizzes/editQuizzes"
+					class="btn btn-primary">Edit&nbsp;Quizzes</a><a
+					href="/quizzes/editQuestions" class="btn btn-primary">Edit&nbsp;Questions</a>
+			</div>
+
+			<div class="col-sm-3">
+				<br> <br> <br>
+				<div class="text-white">
+					Playing&nbsp;:&nbsp;<span id="quizName"></span><br>
+					Question&nbsp;:&nbsp;<span id="numberOfQuestion"></span><br>
+					Points&nbsp;:&nbsp;<span id="score"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<br> <br>
+				<h3 class="text-center text-white" id="questionText"></h3>
+
+				<br> <br>
+			</div>
+		</div>
+
+		<div class="row">
+			<br> <br> <br>
+			<div class="col-sm-4 offset-sm-2">
+				<div class="wraper">
+					<span class="float-left" id="A">A</span>
+					<div class="text-center"></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="wraper">
+					<span class="float-left" id="B">B</span>
+					<div class="text-center"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<br> <br> <br>
+			<div class="col-sm-4 offset-sm-2">
+				<div class="wraper">
+					<span class="float-left" id="C">C</span>
+					<div class="text-center"></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="wraper">
+					<span class="float-left" id="D">D</span>
+					<div class="text-center"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<br> <br> <br> <br> <br>
+				<div class="text-right">
+					<a href="#" class="btn btn-primary" id="nextQuestion">Next&nbsp;Question</a><a
+						href="/quizzes/playQuiz" class="btn btn-primary hidden"
+						id="nextQuiz">Next&nbsp;Quiz</a><a href="/quizzes/"
+						class="btn btn-primary invisible" id="changeQuiz">Change&nbsp;Quiz</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

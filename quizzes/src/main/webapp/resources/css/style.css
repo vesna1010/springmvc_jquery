@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #6f5499;
+}
+
+table {
+	background-color: #C0C0C0;
+}
+
+.wraper {
+	background-color: #C0C0C0;
+	height: 40px;
+	padding: 10px;
+}

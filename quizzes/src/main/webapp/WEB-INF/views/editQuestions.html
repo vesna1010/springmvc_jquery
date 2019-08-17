@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit Questions</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://localhost:8080/quizzes/resources/js/editQuestions.js"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://localhost:8080/quizzes/resources/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<br>
+				<h2 class="text-white">Edit Questions</h2>
+				<br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="#" id="openQuestionDialog" class="btn btn-success">Add&nbsp;Question</a><a
+					href="/quizzes/editQuizzes" class="btn btn-primary">Edit&nbsp;Quizzes</a><a
+					href="/quizzes/playQuiz" class="btn btn-primary">Play&nbsp;Quiz</a>
+
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>QUESTION</th>
+								<th>ANSWER A</th>
+								<th>ANSWER B</th>
+								<th>ANSWER C</th>
+								<th>ANSWER D</th>
+								<th>POINTS</th>
+								<th>QUIZ</th>
+								<th>CORRECT ANSWER</th>
+								<th>MANAGE</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+
+				<div id="questionDialog">
+					<table>
+						<tr>
+							<td>Question</td>
+							<td><input name="id" type="hidden" /> <input
+								name="questionText" type="text" /></td>
+						</tr>
+						<tr>
+							<td>Answer A</td>
+							<td><input name="answerA" type="text" /></td>
+						</tr>
+						<tr>
+							<td>Answer B</td>
+							<td><input name="answerB" type="text" /></td>
+						</tr>
+						<tr>
+							<td>Answer C</td>
+							<td><input name="answerC" type="text" /></td>
+						</tr>
+						<tr>
+							<td>Answer D</td>
+							<td><input name="answerD" type="text" /></td>
+						</tr>
+						<tr>
+							<td>Correct Answer</td>
+							<td><input type="radio" name="correctAnswer" value="A" />A
+								<input type="radio" name="correctAnswer" value="B" />B <input
+								type="radio" name="correctAnswer" value="C" />C <input
+								type="radio" name="correctAnswer" value="D" />D</td>
+						</tr>
+						<tr>
+							<td>Points</td>
+							<td><select name="points">
+									<option value=""></option>
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Quiz Name</td>
+							<td><select name="quiz">
+									<option value=""></option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
