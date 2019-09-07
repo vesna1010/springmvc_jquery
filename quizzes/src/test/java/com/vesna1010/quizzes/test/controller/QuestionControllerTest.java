@@ -57,11 +57,11 @@ public class QuestionControllerTest extends BaseControllerTest {
 	
 		mockMvc.perform(get("/questions"))
 		       .andExpect(status().isOk())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(jsonPath("$", hasSize(3)))
-	           .andExpect(jsonPath("$[0].questionText", is("Question A")))
-	           .andExpect(jsonPath("$[1].questionText", is("Question B")))
-	           .andExpect(jsonPath("$[2].questionText", is("Question C")));
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(jsonPath("$", hasSize(3)))
+	               .andExpect(jsonPath("$[0].questionText", is("Question A")))
+	               .andExpect(jsonPath("$[1].questionText", is("Question B")))
+	               .andExpect(jsonPath("$[2].questionText", is("Question C")));
 	
 		verify(questionService, times(1)).getAllQuestions();
 	}
@@ -71,12 +71,12 @@ public class QuestionControllerTest extends BaseControllerTest {
 		when(questionService.getThreeQuestionsByQuiz(quiz1)).thenReturn(Arrays.asList(question1, question2, question3));
 	
 		mockMvc.perform(get("/questions/three").sessionAttr("quiz", quiz1))
-	           .andExpect(status().isOk())
-               .andExpect(content().contentType("application/json;charset=UTF-8"))
-               .andExpect(jsonPath("$", hasSize(3)))
-               .andExpect(jsonPath("$[0].questionText", is("Question A")))
-               .andExpect(jsonPath("$[1].questionText", is("Question B")))
-               .andExpect(jsonPath("$[2].questionText", is("Question C")));
+	               .andExpect(status().isOk())
+                       .andExpect(content().contentType("application/json;charset=UTF-8"))
+                       .andExpect(jsonPath("$", hasSize(3)))
+                       .andExpect(jsonPath("$[0].questionText", is("Question A")))
+                       .andExpect(jsonPath("$[1].questionText", is("Question B")))
+                       .andExpect(jsonPath("$[2].questionText", is("Question C")));
 	
 		verify(questionService, times(1)).getThreeQuestionsByQuiz(quiz1);
 	}
@@ -86,9 +86,9 @@ public class QuestionControllerTest extends BaseControllerTest {
 		when(questionService.getQuestionById(1L)).thenReturn(question1);
 		
 		mockMvc.perform(get("/questions/1"))
-               .andExpect(status().isOk())
-               .andExpect(content().contentType("application/json;charset=UTF-8"))
-               .andExpect(jsonPath("$.questionText", is("Question A")));
+                       .andExpect(status().isOk())
+                       .andExpect(content().contentType("application/json;charset=UTF-8"))
+                       .andExpect(jsonPath("$.questionText", is("Question A")));
 		
 		verify(questionService, times(1)).getQuestionById(1L);
 	}
@@ -99,8 +99,8 @@ public class QuestionControllerTest extends BaseControllerTest {
 		
 		mockMvc.perform(get("/questions/1"))
 		       .andExpect(status().isNotFound())
-               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-               .andExpect(jsonPath("$", is("No question with id 1")));
+                       .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+                       .andExpect(jsonPath("$", is("No question with id 1")));
 		
 		verify(questionService, times(1)).getQuestionById(1L);
 	}
@@ -118,8 +118,8 @@ public class QuestionControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(question))
 				)
 		       .andExpect(status().isCreated())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(content().string(new ObjectMapper().writeValueAsString(question)));
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(content().string(new ObjectMapper().writeValueAsString(question)));
 		
 		verify(questionService, times(1)).saveQuestion(question);
 	}
@@ -136,10 +136,10 @@ public class QuestionControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(question))
 				)
 		       .andExpect(status().isBadRequest())
-	           .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", containsString("Enter the answer a")))
-	           .andExpect(jsonPath("$", containsString("Enter the answer b")))
-	           .andExpect(jsonPath("$", containsString("Please select a quiz")));
+	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+	               .andExpect(jsonPath("$", containsString("Enter the answer a")))
+	               .andExpect(jsonPath("$", containsString("Enter the answer b")))
+	               .andExpect(jsonPath("$", containsString("Please select a quiz")));
 		
 		verify(questionService, never()).saveQuestion(question);
 	}
@@ -154,8 +154,8 @@ public class QuestionControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(question1))
 				)
 		       .andExpect(status().isOk())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(content().string(new ObjectMapper().writeValueAsString(question1)));
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(content().string(new ObjectMapper().writeValueAsString(question1)));
 		
 		verify(questionService, times(1)).updateQuestion(1L, question1);
 	}
@@ -171,7 +171,7 @@ public class QuestionControllerTest extends BaseControllerTest {
 				)
 		       .andExpect(status().isNotFound())
 		       .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", is("No question with id 1")));
+	               .andExpect(jsonPath("$", is("No question with id 1")));
 		
 		verify(questionService, times(1)).updateQuestion(1L, question1);
 	}
@@ -188,10 +188,10 @@ public class QuestionControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(question))
 				)
 		       .andExpect(status().isBadRequest())
-	           .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", containsString("Enter the answer a")))
-	           .andExpect(jsonPath("$", containsString("Enter the answer b")))
-	           .andExpect(jsonPath("$", containsString("Please select a quiz")));
+	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+	               .andExpect(jsonPath("$", containsString("Enter the answer a")))
+	               .andExpect(jsonPath("$", containsString("Enter the answer b")))
+	               .andExpect(jsonPath("$", containsString("Please select a quiz")));
 		
 		verify(questionService, never()).updateQuestion(1L, question);
 	}
@@ -211,9 +211,9 @@ public class QuestionControllerTest extends BaseControllerTest {
 		doThrow(new ResourceNotFoundException("No question with id 1")).when(questionService).deleteQuestionById(1L);
 		
 		mockMvc.perform(delete("/questions/1"))
-	           .andExpect(status().isNotFound())
-	           .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-               .andExpect(jsonPath("$", is("No question with id 1")));
+	               .andExpect(status().isNotFound())
+	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+                       .andExpect(jsonPath("$", is("No question with id 1")));
 		
 		verify(questionService, times(1)).deleteQuestionById(1L);
 	}
