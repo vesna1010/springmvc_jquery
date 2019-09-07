@@ -70,9 +70,9 @@ public class QuizControllerTest extends BaseControllerTest {
 		when(quizService.getQuizById(1L)).thenReturn(quiz1);
 
 		mockMvc.perform(get("/quizzes/1"))
-	           .andExpect(status().isOk())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(jsonPath("$.name", is("Quiz A")));
+	               .andExpect(status().isOk())
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(jsonPath("$.name", is("Quiz A")));
 
 	    verify(quizService, times(1)).getQuizById(1L);
 	}
@@ -82,9 +82,9 @@ public class QuizControllerTest extends BaseControllerTest {
 		when(quizService.getQuizById(1L)).thenThrow(new ResourceNotFoundException("No quiz with id 1"));
 
 		mockMvc.perform(get("/quizzes/1"))
-	           .andExpect(status().isNotFound())
-	           .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", is("No quiz with id 1")));
+	               .andExpect(status().isNotFound())
+	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+	               .andExpect(jsonPath("$", is("No quiz with id 1")));
 
 	    verify(quizService, times(1)).getQuizById(1L);
 	}
@@ -101,8 +101,8 @@ public class QuizControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(quiz))
 				)
 		       .andExpect(status().isCreated())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(content().string(new ObjectMapper().writeValueAsString(quiz)));
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(content().string(new ObjectMapper().writeValueAsString(quiz)));
 		
 		verify(quizService, times(1)).saveQuiz(quiz);
 	}
@@ -119,8 +119,8 @@ public class QuizControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(quiz))
 				)
 		       .andExpect(status().isBadRequest())
-	           .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", containsString("Enter a valid name")));
+	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+	               .andExpect(jsonPath("$", containsString("Enter a valid name")));
 		
 		verify(quizService, never()).saveQuiz(quiz);
 	}
@@ -135,8 +135,8 @@ public class QuizControllerTest extends BaseControllerTest {
 				.content(new ObjectMapper().writeValueAsString(quiz1))
 				)
 		       .andExpect(status().isOk())
-	           .andExpect(content().contentType("application/json;charset=UTF-8"))
-	           .andExpect(content().string(new ObjectMapper().writeValueAsString(quiz1)));
+	               .andExpect(content().contentType("application/json;charset=UTF-8"))
+	               .andExpect(content().string(new ObjectMapper().writeValueAsString(quiz1)));
 		
 		verify(quizService, times(1)).updateQuiz(1L, quiz1);
 	}
@@ -152,7 +152,7 @@ public class QuizControllerTest extends BaseControllerTest {
 				)
 		       .andExpect(status().isNotFound())
 		       .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", is("No quiz with id 1")));
+	               .andExpect(jsonPath("$", is("No quiz with id 1")));
 		
 		verify(quizService, times(1)).updateQuiz(1L, quiz1);
 	}
@@ -192,7 +192,7 @@ public class QuizControllerTest extends BaseControllerTest {
 		mockMvc.perform(delete("/quizzes/1"))
 		       .andExpect(status().isNotFound())
 		       .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-	           .andExpect(jsonPath("$", is("No quiz with id 1")));
+	               .andExpect(jsonPath("$", is("No quiz with id 1")));
 		
 		verify(quizService, times(1)).deleteQuizById(1L);       
 	}
