@@ -211,8 +211,8 @@ public class QuestionControllerTest extends BaseControllerTest {
 		doThrow(new ResourceNotFoundException("No question with id 1")).when(questionService).deleteQuestionById(1L);
 		
 		mockMvc.perform(delete("/questions/1"))
-	               .andExpect(status().isNotFound())
-	               .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
+		       .andExpect(status().isNotFound())
+		       .andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
 		       .andExpect(jsonPath("$", is("No question with id 1")));
 		
 		verify(questionService, times(1)).deleteQuestionById(1L);
