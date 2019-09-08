@@ -77,7 +77,7 @@ public class HomeControllerTest extends BaseControllerTest {
 				.sessionAttr("quiz", quiz1)
 				)
 		       .andExpect(status().isOk())
-	               .andExpect(view().name("playQuiz"));     
+		       .andExpect(view().name("playQuiz"));     
 	}
 	
 	@Test
